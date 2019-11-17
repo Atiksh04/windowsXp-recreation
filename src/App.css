@@ -20,3 +20,137 @@
 .App-link {
   color: #09d3ac;
 }
+
+.boot{
+  height: 100vh;
+  width:100vw;
+  background-color: black;
+}
+.b_left{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+.im{
+  margin-top:15vh;
+}
+.lead{
+  color:white;
+  letter-spacing: 2px;
+}
+.startup{
+  height: 100vh;
+  width:100vw;
+}
+.startup_header{
+  background-color:#003399 ;
+   width:100vw;
+  height:15vh;
+}
+.startup_middle{
+  background-color: #5A7EDC;
+  width: 100vw;
+  height: 70vh; 
+  margin:0px !important;
+}
+.startup_footer{
+  background-color: #003399 ;
+  width:100vw;
+  height: 15vh;
+}
+.hr_header{
+  position: absolute;
+    left: 0px;
+    right: 0px;
+    padding: 0px;
+    margin-top:0px;
+    display: block;
+    height: 2px;
+    background: linear-gradient(to right, rgb(218, 136, 74) 50%, rgb(218, 136, 74) 30%, rgba(0, 0, 0, 0) 100%);
+    background-image: linear-gradient(to right, rgb(218, 136, 74) 50%, rgb(218, 136, 74) 30%, rgba(0, 0, 0, 0) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+.hr_footer{
+  position: absolute;
+    left: 0px;
+    right: 0px;
+    display: block;
+    height: 2px;
+    margin-top:0pc;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(218, 136, 74) 50%, rgba(0, 0, 0, 0) 100%);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(218, 136, 74) 50%, rgba(0, 0, 0, 0) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+}
+.desktop{
+  width:100vw;
+  height: 100vh;
+  background-image: url('./images/des_back.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.taskbar{
+  background:  linear-gradient(rgb(31, 47, 134) 0px, rgb(49, 101, 196) 3%, rgb(54, 130, 229) 6%, rgb(68, 144, 230) 10%, rgb(56, 131, 229) 12%, rgb(43, 113, 224) 15%, rgb(38, 99, 218) 18%, rgb(35, 91, 214) 20%, rgb(34, 88, 213) 23%, rgb(33, 87, 214) 38%, rgb(36, 93, 219) 54%, rgb(37, 98, 223) 86%, rgb(36, 95, 220) 89%, rgb(33, 88, 212) 92%, rgb(29, 78, 192) 95%, rgb(25, 65, 165) 98%);
+    background-image: linear-gradient(rgb(31, 47, 134) 0px, rgb(49, 101, 196) 3%, rgb(54, 130, 229) 6%, rgb(68, 144, 230) 10%, rgb(56, 131, 229) 12%, rgb(43, 113, 224) 15%, rgb(38, 99, 218) 18%, rgb(35, 91, 214) 20%, rgb(34, 88, 213) 23%, rgb(33, 87, 214) 38%, rgb(36, 93, 219) 54%, rgb(37, 98, 223) 86%, rgb(36, 95, 220) 89%, rgb(33, 88, 212) 92%, rgb(29, 78, 192) 95%, rgb(25, 65, 165) 98%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial; ;
+  height:30px;
+  position:fixed;
+  bottom: 0;
+  width: 100vw;
+}
+.right_corner{
+position:fixed;
+right:0;
+text-align: left;
+color:white;
+padding-top: 2px;
+width:130px;
+height: inherit;
+  background-color:#14A5F4;
+}
+.start_button{
+  background:inherit;
+  position: fixed;
+  left:0;
+  margin: 0px;
+  padding: 0px;
+  border:none;
+}
+.start_button:hover{
+  cursor:default;
+  border:none;
+}
+.start_button:active{
+  border:none;
+}
