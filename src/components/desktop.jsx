@@ -7,6 +7,8 @@ import img2 from '../images/documents.png'
 import img3 from '../images/ie.png'
 import img4 from '../images/notepad.png'
 import img5 from '../images/git1.png'
+import MyComputer from './mycomputer.jsx'
+
 export default class Desktop extends React.Component{
 	componentDidMount(){
 		console.log('model loading started')
@@ -42,7 +44,10 @@ export default class Desktop extends React.Component{
 							<p className="text-white">GitRepo</p></a>
 						</div>
 					</div>
-					<div className="col-lg-9 col-md-9 col-xl-9"></div>
+					<div className="col-lg-9 col-md-9 col-xl-9">
+					<MyComputer/>
+
+					</div>
 				</div>
 				<TaskBar handTrack={handTrack}/>
 			</div>

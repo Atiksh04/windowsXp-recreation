@@ -32,7 +32,9 @@ export default class TaskBar extends React.Component{
 					<span>{this.hour}:{this.min}</span>
 				</div>
 			</div>
-			<Expanded/>
+ 
+
+ 	
 			</div>
 			)
 	}
