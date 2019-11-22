@@ -3,11 +3,13 @@ import TaskBar from './taskbar'
 import * as handTrack from 'handtrackjs';
 import img from '../images/des_back.jpg'
 import img1 from '../images/computer.png'
-import img3 from '../images/ie.png'
+import img3 from '../images/documents.png'
 import img4 from '../images/notepad.png'
 import img5 from '../images/git1.png'
 import MyComputer from './mycomputer.jsx'
 import Notepad from './notepad.jsx'
+import MyDocument from './mydocuments.jsx'
+
 export default class Desktop extends React.Component{
 	componentDidMount(){
 		console.log('model loading started')
@@ -28,7 +30,7 @@ export default class Desktop extends React.Component{
 						</div>
 						<div className="icon_button mt-5">
 							<img src={img3} alt="icon"/>
-							<p>Internet Explorer</p>
+							<p>My Document</p>
 						</div>
 						<div className="icon_button mt-5">
 							<img src={img4} alt="icon"/>
@@ -40,8 +42,7 @@ export default class Desktop extends React.Component{
 						</div>
 					</div>
 					<div className="col-lg-9 col-md-9 col-xl-9">
-					<Notepad/>
-
+					<MyDocument/>
 					</div>
 				</div>
 				<TaskBar handTrack={handTrack}/>
