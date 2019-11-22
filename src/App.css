@@ -30,12 +30,57 @@
   background-color: black;
 }
 .b_left{
-  position: fixed;
+  position: absolute;
   bottom: 0;
   right: 0;
 }
+.animation{
+  width:400px;
+  height: 25px;
+  position: relative;
+  border:2px solid white;
+  border-radius:10px;
+  background-color: black;
+  position: fixed;
+  margin: auto;
+  left:35vw;
+}
+.animation_span{
+  height: 20px;
+  width:15px;
+  position: relative;
+  background-color: blue;
+  color:blue;
+  border-radius:2px;
+  animation-name: bootanimation;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  -webkit-animation-name: bootanimation;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-delay: 2s;
+ -webkit-animation-iteration-count: infinite;
+ -webkit-animation-timing-function: linear;
+}
+@keyframes bootanimation{
+ 0%{
+    left:0px;
+  }
+  100%{
+    left:380px;
+  }
+}
+@-webkit-keyframes bootanimation{
+ 0%{
+    left:0px;
+  }
+  100%{
+    left:380px;
+  }
+}
 .im{
-  margin-top:15vh;
+  margin-top:10vh;
 }
 .lead{
   color:white;

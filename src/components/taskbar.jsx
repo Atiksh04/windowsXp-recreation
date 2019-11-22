@@ -31,7 +31,7 @@ export default class TaskBar extends React.Component{
 				<div className="col-md-9 col-lg-9">
 				
 
-				
+
 				</div>
 
 				<div className="col-md-1 col-lg-1 right_corner pl-2 ">
@@ -42,7 +42,7 @@ export default class TaskBar extends React.Component{
 				</div>
 			</div>
  
-			<Expanded/>
+			
  	
 			</div>
 			)
