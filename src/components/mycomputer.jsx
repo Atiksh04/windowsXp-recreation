@@ -101,15 +101,15 @@ export default class MyComputer extends React.Component{
 								User's Documents
 							</span>
 						</div>
-						<span className="mt-4 font-weight-bold">Hard Disk Drives</span>
+						<span className="mt-1 font-weight-bold">Hard Disk Drives</span>
 						<hr className="blue_sperator mt-0 mb-0"/>
-						<div className="mt-2 mb-3">
+						<div className=" mb-4">
 							<span className="mr-5 ">
 								<img src={localdisk} alt="icon" className="mr-1"/>
 								Local Disk (C:)
 							</span>
 						</div>
-							<span className="mt-4 font-weight-bold">Hard Disk Drives</span>
+							<span className="mt-1 font-weight-bold">Hard Disk Drives</span>
 						<hr className="blue_sperator mt-0 mb-0"/>
 						<div className="mt-4 mb-2">
 							<span className="mr-5 ">
