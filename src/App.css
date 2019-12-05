@@ -54,14 +54,9 @@
   border-radius:2px;
   animation-name: bootanimation;
   animation-duration: 2s;
-  animation-delay: 2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-  -webkit-animation-name: bootanimation;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-delay: 2s;
- -webkit-animation-iteration-count: infinite;
- -webkit-animation-timing-function: linear;
+  
 }
 @keyframes bootanimation{
  0%{

@@ -21,6 +21,10 @@ import localdisk from '../images/localdisk.png'
 import pictures from '../images/pictures.png'
 import music from '../images/music.png'
 export default class MyDocument extends React.Component{
+	
+	closeDialog=()=>{
+		this.props.mydocumentClose(false)
+	}
 	render(){
 		return(
 			<div className="mycomputer">
@@ -30,7 +34,7 @@ export default class MyDocument extends React.Component{
 					<span className="header_button">
 						<button className="minimize"></button>
 						<button className="maximize"></button>
-						<button className="close"><img src={close} height="27px" alt="close_button"/></button>
+						<button className="close" onClick={this.closeDialog}><img src={close} height="27px" alt="close_button"/></button>
 					</span>
 				</div>
 				<div className="dialog_after_header mr-1 ml-1">

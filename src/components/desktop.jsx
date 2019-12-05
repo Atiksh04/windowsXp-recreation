@@ -11,13 +11,32 @@ import Notepad from './notepad.jsx'
 import MyDocument from './mydocuments.jsx'
 
 export default class Desktop extends React.Component{
-	componentDidMount(){
-		console.log('model loading started')
-		handTrack.load().then(model => {
-  			console.log("model loaded")
-  			this.hand=handTrack
- 			console.log('hand',this.hand)
- 		});
+	constructor(props){
+		super(props)
+		this.state={
+			myc:false,
+			myd:false,
+			not:false
+		}
+		this.myDocuments = this.myDocuments.bind(this)
+		this.MyComputer = this.MyComputer.bind(this)
+		this.notepad= this.notepad.bind(this)
+	}
+	myDocuments(value){
+			this.setState({
+				myd:value
+			})
+		
+	}
+	MyComputer(value){
+		this.setState({
+			myc:value
+		})
+	}
+	notepad(value){
+		this.setState({
+			not:value
+		})
 	}
 	render(){
 		return(
@@ -25,16 +44,16 @@ export default class Desktop extends React.Component{
 				<div className="row a">
 					<div className="col-lg-3 col-md-3 col-xl-3">
 						<div className="icon_button mt-5">
-							<img src={img1} alt="icon"/>
-							<p>My Computer</p>
+						<span onClick={()=>this.MyComputer(true)}>	<img src={img1} alt="icon"/>
+							<p>My Computer</p></span>
 						</div>
 						<div className="icon_button mt-5">
-							<img src={img3} alt="icon"/>
-							<p>My Document</p>
+							<span onClick={()=>this.myDocuments('true')}><img src={img3} alt="icon"/>
+							<p>My Document</p></span>
 						</div>
 						<div className="icon_button mt-5">
-							<img src={img4} alt="icon"/>
-							<p>Notepad</p>
+							<span onClick={()=>this.notepad(true)}><img src={img4} alt="icon"/>
+							<p>Notepad</p></span>
 						</div>
 						<div className="icon_button mt-5">
 							<a href="#"><img src={img5} alt="icon" height="35px"/>
@@ -42,7 +61,10 @@ export default class Desktop extends React.Component{
 						</div>
 					</div>
 					<div className="col-lg-9 col-md-9 col-xl-9">
-					<MyDocument/>
+					
+						{this.state.myd ? <MyDocument mydocumentClose={this.myDocuments}/> : <span></span>}
+						{this.state.myc ? <MyComputer mycomputerClose={this.MyComputer}/> : <span></span>}
+						{this.state.not ? <Notepad notepadClose={this.notepad}/> : <span></span>}
 					</div>
 				</div>
 				<TaskBar handTrack={handTrack}/>

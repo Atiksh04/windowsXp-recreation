@@ -10,20 +10,28 @@ export default class TaskBar extends React.Component{
 		super(props)
 		this.hour= new Date().getHours()
 		this.min= new Date().getMinutes()
+		this.showExpanded = this.showExpanded.bind(this)
+		this.state={
+			expanded:false
+		}
 	}
 	componentDidMount(){
 		setTimeout(()=>{
 			console.log('inside taskbar',this.props.handTrack)
 		},10000)
 	}
-
+	showExpanded(){
+		this.setState({
+			expanded:!this.state.expanded
+		})
+	}
 	render(){
 	
 		return(
 			<div>
 			<div className="taskbar row">
 				<div className="col-lg-2 col-md-2">
-				<button className="start_button">
+				<button className="start_button" onClick={this.showExpanded()}>
 					<img src={img4} alt="start_icon"/>
 				</button>
 				</div>

@@ -1,6 +1,25 @@
 import React from 'react'
 import img1 from '../images/logo1.png'
+import * as handTrack from 'handtrackjs';
+import Webcam from 'react-webcam'
 export default class Startup extends React.Component{
+	constructor(props){
+		super(props)
+	}
+	componentDidMount(){
+// 	handTrack.load().then(model => {
+//   			console.log("model loaded")
+// 			setTimeout(()=>{
+// model.detect(this.webRef.current.video).then(predictions => {
+//        console.log("Predictions: ", predictions)
+// 	  })		
+ 			
+				
+// 			},10000)
+	  			
+//  		});
+	 
+}
 	render(){
 		return(
 			<div className="startup">

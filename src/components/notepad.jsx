@@ -2,6 +2,9 @@ import React from 'react'
 import notepad from '../images/notepad.png'
 import close from '../images/application-exit.png'
 export default class Notepad extends React.Component{
+	close=()=>{
+		this.props.notepadClose(false)
+	}
 	render(){
 		return(
 			<div class="notepad">
@@ -11,7 +14,7 @@ export default class Notepad extends React.Component{
 					<span className="header_button">
 						<button className="minimize"></button>
 						<button className="maximize"></button>
-						<button className="close"><img src={close} height="27px" alt="close_button"/></button>
+						<button className="close" onClick={this.close}><img src={close} height="27px" alt="close_button"/></button>
 					</span>
 				</div>
 				<div className="notepad_after_dialog text-left pb-1">

@@ -20,6 +20,9 @@ import cdDrive from '../images/cd-drive.png'
 import localdisk from '../images/localdisk.png'
 
 export default class MyComputer extends React.Component{
+	close=()=>{
+		this.props.mycomputerClose(false)
+	}
 	render(){
 		return(
 			<div className="mycomputer">
@@ -29,7 +32,7 @@ export default class MyComputer extends React.Component{
 					<span className="header_button">
 						<button className="minimize"></button>
 						<button className="maximize"></button>
-						<button className="close"><img src={close} height="27px" alt="close_button"/></button>
+						<button className="close" onClick={this.close}><img src={close} height="27px" alt="close_button"/></button>
 					</span>
 				</div>
 				<div className="dialog_after_header mr-1 ml-1">
