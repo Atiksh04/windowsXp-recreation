@@ -15,11 +15,7 @@ export default class TaskBar extends React.Component{
 			expanded:false
 		}
 	}
-	componentDidMount(){
-		setTimeout(()=>{
-			console.log('inside taskbar',this.props.handTrack)
-		},10000)
-	}
+	
 	showExpanded(){
 		this.setState({
 			expanded:!this.state.expanded
@@ -29,9 +25,10 @@ export default class TaskBar extends React.Component{
 	
 		return(
 			<div>
+			{this.state.expanded ? <Expanded/> : <span></span>}
 			<div className="taskbar row">
 				<div className="col-lg-2 col-md-2">
-				<button className="start_button" onClick={this.showExpanded()}>
+				<button className="start_button" onClick={this.showExpanded}>
 					<img src={img4} alt="start_icon"/>
 				</button>
 				</div>

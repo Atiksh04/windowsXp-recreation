@@ -67,7 +67,7 @@ export default class Desktop extends React.Component{
 						{this.state.not ? <Notepad notepadClose={this.notepad}/> : <span></span>}
 					</div>
 				</div>
-				<TaskBar handTrack={handTrack}/>
+				<TaskBar />
 			</div>
 			)
 	}
