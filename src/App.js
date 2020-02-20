@@ -19,8 +19,11 @@ class App extends React.Component{
   	}
     this.biosCallback=this.biosCallback.bind(this)
     this.loadPosenet = this.loadPosenet.bind(this)
+    this.width=window.innerWidth
+    console.log('width',this.width)
   }
   componentDidMount(){
+
   this.loadPosenet()
   }
   async loadPosenet(){
@@ -28,7 +31,7 @@ class App extends React.Component{
       const net = await posenet.load({
       architecture: 'MobileNetV1',
       outputStride: 16,
-      inputResolution: { width: 300, height: 300 },
+      inputResolution: { width: 200, height: 200 },
       multiplier: 0.75
     });
       console.log('posenet loaded')
@@ -41,23 +44,26 @@ class App extends React.Component{
   }
   render(){
   return (
-    <div className="App">
-      {this.state.posenetLoading ? 
-        <BootPage/> 
-        :
-          (this.state.gotBios) ?
-          <div>
-            <Startup posenet={this.state.posenet} biosVal={this.state.biosVal}/> 
-         
-         </div>
-         :
-        <Bios biosCb={this.biosCallback}/>
-         }  
-          
-      
-      	
-      
-    </div>
+    <div>
+      {this.width<1100 ? 
+        <div className="text-center mt-5 pt-5">
+          <p className="less_width "> Windows Xp was not made to be Responsive. Switch to a Desktop </p>
+        </div> : 
+        <div className="App">
+          {this.state.posenetLoading ? 
+            <BootPage/> 
+            :
+              (this.state.gotBios) ?
+              <div>
+                <Startup posenet={this.state.posenet} biosVal={this.state.biosVal}/> 
+             
+             </div>
+             :
+            <Bios biosCb={this.biosCallback}/>
+             }  
+        </div>
+      }
+  </div>
   );
 }
 }

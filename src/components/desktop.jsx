@@ -7,6 +7,7 @@ import img4 from '../images/notepad.png'
 import img5 from '../images/git1.png'
 import MyComputer from './mycomputer.jsx'
 import Notepad from './notepad.jsx'
+
 import MyDocument from './mydocuments.jsx'
 export default class Desktop extends React.Component{
 	constructor(props){

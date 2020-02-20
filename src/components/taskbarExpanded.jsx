@@ -24,8 +24,21 @@ import run from '../images/run.png'
 import logoff from '../images/logooff.png'
 import shutdown from '../images/shutdown.png'
 
-
+import ShutDownComp from './shutdown.jsx'
 export default class TaskBarExpanded extends React.Component{
+	constructor(props){
+		super(props)
+		this.state={
+			showShutdown:false
+		}
+		this.showShut=this.showShut.bind(this)
+	}
+	showShut(){
+		console.log('clicked')
+		this.setState({
+			showShutdown:true
+		})
+	}
 	render(){
 		return(
 			<div className="taskbar_expanded">
@@ -129,10 +142,11 @@ export default class TaskBarExpanded extends React.Component{
 				<span className="mr-4">
 					<img src={logoff} alt="icon"/> Log Off
 				</span>
-				<span>
+				<span onClick={this.showShut}>
 					<img src={shutdown} alt="icon"/> Shutdown
 				</span>
 				</div>
+				{this.state.showShutdown ? <ShutDownComp/> : <span></span>}
 			</div>
 			)
 	}

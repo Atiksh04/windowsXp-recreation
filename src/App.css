@@ -178,6 +178,7 @@
   height:33px;
   position:fixed;
   bottom: 0;
+  z-index: 5;
   margin:0px !important;
   width: 100vw;
 }
@@ -477,4 +478,37 @@ source{
 }
 .video{
   display: none;
+}
+.shutdown_dialog{
+  position: absolute;
+  top:5%;
+  left:35vw;
+  height: 30vh;
+  width: 33vw;
+  background:blue;
+}
+.shutdown_header{
+  background-color: #003399 ;
+  height:15%;
+  width: inherit;
+}
+.shutdown_middle{
+  height:70%;
+  width: inherit;
+  background-color: #5A7EDC;
+   padding-top:10%;
+  color:white;
+  font-size:13px;
+}
+.shutitdown{
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top:0;
+  z-index: 22;
+}
+.less_width{
+  font-family: terminal;
+  font-size: 25px;
 }
