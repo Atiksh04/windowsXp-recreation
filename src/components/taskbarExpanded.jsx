@@ -66,7 +66,7 @@ export default class TaskBarExpanded extends React.Component{
 							<span className="ml-1">Messanger</span>
 						</div>
 						<hr className="separator mt-5 mb-1"/>
-						<div className=" ml-0 text-center pl-0">
+						<div className="all-program ml-0 p-1 text-center pl-0">
 							<span className="mr-1">All Programs</span>
 							<img src={allProgram} alt="icon"/>
 						</div>					

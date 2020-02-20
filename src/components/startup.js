@@ -1,171 +1,132 @@
 import React from 'react'
 import img1 from '../images/logo1.png'
-import test from '../images/test.jpg'
-import * as handTrack from 'handtrackjs';
-import Webcam from 'react-webcam'
-import MediaCapturer from 'react-multimedia-capture'
+import Desktop from './desktop'
+import Logoff from './logoff'
 export default class Startup extends React.Component{
 	constructor(props){
 		super(props)
 		this.state={
-			granted: false,
-			rejectedReason: '',
-			recording: false,
-			paused: false
+			tfeatures:false,
+			cameraAccess:true,
+			showStartup:true,
+			showDesktop:false,
+			logoff:false
 		}
-			this.webRef = React.createRef()
-			this.handleRequest = this.handleRequest.bind(this);
-		this.handleGranted = this.handleGranted.bind(this);
-		this.handleDenied = this.handleDenied.bind(this);
-		this.handleStart = this.handleStart.bind(this);
-		this.handleStop = this.handleStop.bind(this);
-		this.handlePause = this.handlePause.bind(this);
-		this.handleResume = this.handleResume.bind(this);
-		this.handleStreamClose = this.handleStreamClose.bind(this);
-		this.setStreamToVideo = this.setStreamToVideo.bind(this);
-		this.releaseStreamFromVideo = this.releaseStreamFromVideo.bind(this);
-		this.downloadVideo = this.downloadVideo.bind(this);
+		this.videoRef=React.createRef()
+		this.video=React.createRef()
+		this.close=this.close.bind(this)
+		this.showLog=this.showLog.bind(this)
+		this.showDesktop=this.showDesktop.bind(this)
+		this.detect=this.detect.bind(this)
 	}
-	handtrack(){
-		console.log('insied handtrack')
-	handTrack.load().then(model => {
-  			console.log("model loaded")
-  			console.log(this.webRef)
-  			setTimeout(()=>{
-				model.detect(this.webRef.current).then(predictions => {
-      				console.log("Predictions: ", predictions)})},5000)
-	
-	  })			
+	componentDidMount(){
+		if(this.props.biosVal==='Yes'){
+			this.setState({tfeatures:true})
+		navigator.mediaDevices
+		.getUserMedia({video: {
+  		  facingMode:"user"}})
+		.then((stream)=>{
+			this.setState({cameraAccess:true})
+			this.video.current.srcObject=stream
+			const draw=()=>{
+			this.videoRef.current.getContext('2d').drawImage(this.video.current,0,0,200,200)
+				window.webkitRequestAnimationFrame(draw)
+			}
+			window.webkitRequestAnimationFrame(draw)
+			 this.detect()
+		})
+		.catch((err)=>{
+			this.setState({cameraAccess:false})
+			console.log('err in get USer media',err)
+		})
 	}
-	handleRequest() {
-		console.log('Request Recording...');
+	else {
+		this.setState({cameraAccess:false})
 	}
-	handleGranted() {
-		this.setState({ granted: true });
-		console.log('Permission Granted!');
 	}
-	handleDenied(err) {
-		this.setState({ rejectedReason: err.name });
-		console.log('Permission Denied!', err);
-	}
-	handleStart(stream) {
-		this.setState({
-			recording: true
-		});
-
-		this.setStreamToVideo(stream);
-		console.log('Recording Started.');
-	}
-	handleStop(blob) {
-		this.setState({
-			recording: false
-		});
-
-		this.releaseStreamFromVideo();
-
-		console.log('Recording Stopped.');
-		this.downloadVideo(blob);
-	}
-	handlePause() {
-		this.releaseStreamFromVideo();
-
-		this.setState({
-			paused: true
-		});
-	}
-	handleResume(stream) {
-		this.setStreamToVideo(stream);
-
-		this.setState({
-			paused: false
-		});
-	}
-	handleError(err) {
-		console.log(err);
-	}
-	handleStreamClose() {
-		this.setState({
-			granted: false
-		});
-	}
-	setStreamToVideo(stream) {
-		console.log(this.webRef)
-		let video = this.webRef.current;
-		
-		if(window.URL) {
-			video.src = window.URL.createObjectURL(stream);
+	async detect(){
+		if(this.state.showStartup){
+			const estimate=await this.props.posenet.estimateSinglePose(this.videoRef.current, {
+	  		  flipHorizontal: false
+			})
+			//console.log('estimate left',estimate.keypoints[9].position.x)
+			//console.log('estimate rigth',estimate.keypoints[10].position.x)
+			if(estimate.keypoints[10].position.x<60){
+				console.log('target value')
+				this.showDesktop()
+			}
+			this.id=window.webkitRequestAnimationFrame(this.detect)
 		}
-		else {
-			video.src = stream;
+		else if (this.state.showDesktop){
+			console.log('else if')
+			const estimate2=await this.props.posenet.estimateSinglePose(this.videoRef.current, {
+	  		  flipHorizontal: false
+			})
+			if(estimate2.keypoints[3].position.x<20){
+			 
+				this.showLog()
+			}
+			this.id2=window.webkitRequestAnimationFrame(this.detect)
 		}
-		this.handtrack()
+		else{
+			console.log('else')
+			
+		}
 	}
-	releaseStreamFromVideo() {
-		this.webRef.current.src = '';
+	showLog(){
+		this.setState({
+					showDesktop:false,
+					logoff:true
+				})
+		cancelAnimationFrame(this.id)
+		cancelAnimationFrame(this.id2)
 	}
-	downloadVideo(blob) {
-		let url = URL.createObjectURL(blob);
-		let a = document.createElement('a');
-		a.style.display = 'none';
-		a.href = url;
-		a.target = '_blank';
-		document.body.appendChild(a);
-
-		a.click();
+	showDesktop(){
+		this.setState({
+			showDesktop:true,
+			showStartup:false
+		})
+		cancelAnimationFrame(this.id)
+	}
+	close(value){
+		console.log('logoffcb',value)
+		this.setState({
+			showDesktop:true,
+			logoff:false
+		})
 	}
 	render(){
-		const granted = this.state.granted;
-		const rejectedReason = this.state.rejectedReason;
-		const recording = this.state.recording;
-		const paused = this.state.paused;
 		return(
+			<div>
+			<video ref={this.video} autoPlay className="video"/>	
+				{this.state.tfeatures ? <canvas  height="200" width="200" className="video_stream" ref={this.videoRef}/> : <span></span> }
+				
+			{(this.state.showStartup) ? 
 			<div className="startup">
-
-			<MediaCapturer
-					constraints={{ audio: true, video: true }}
-					timeSlice={10}
-					onRequestPermission={this.handleRequest}
-					onGranted={this.handleGranted}
-					onDenied={this.handleDenied}
-					onStart={this.handleStart}
-					onStop={this.handleStop}
-					onPause={this.handlePause}
-					onResume={this.handleResume}
-					onError={this.handleError} 
-					onStreamClosed={this.handleStreamClose}
-					render={({ request, start, stop, pause, resume }) => 
-					<div>
-						<p>Granted: {granted.toString()}</p>
-						<p>Rejected Reason: {rejectedReason}</p>
-						<p>Recording: {recording.toString()}</p>
-						<p>Paused: {paused.toString()}</p>
-
-						{!granted && <button onClick={request}>Get Permission</button>}
-						<button onClick={start}>Start</button>
-						<button onClick={stop}>Stop</button>
-						<button onClick={pause}>Pause</button>
-						<button onClick={resume}>Resume</button>
-						
-						<p>Streaming test</p>
-						<video autoPlay ref={this.webRef} width="320" height="300">
-							<source/>
-						</video>
-					</div>
-				} />
-
-
-
 				<div className="startup_header"></div>
 				<hr className="hr_header"/>
 				<div className="startup_middle row">
 					<div className="col-lg-9 text-right pt-5">
 					<img className="mt-5 pt-5" src={img1} alt="logo" height="180px"/>
 					</div>
-					<div className="col-lg-3 bg"></div>
+					<div className="col-lg-3 bg m-auto">
+						{this.state.cameraAccess ?<div> <p className="startup_text">Your Right Hand is the key to open Windows</p><p className="startup_text_two">(Show your right hand to open Windows)</p> </div>: <button className="btn logOff_button" onClick={this.showDesktop}>Click to open Windows</button>}
+					</div>
 				</div>
 				<hr className="hr_footer"/>
 				<div className="startup_footer"></div>
 			</div>
+			:
+			(this.state.showDesktop) ?
+			<Desktop />
+			:
+			(this.state.logoff) ? 
+			<Logoff mycomputerClose={this.close}/>
+			 :
+			 <span></span>
+		}
+			</div>
 			)
-	}
+			}
+	
 }

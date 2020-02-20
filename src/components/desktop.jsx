@@ -1,6 +1,5 @@
 import React from 'react'
 import TaskBar from './taskbar'
-import * as handTrack from 'handtrackjs';
 import img from '../images/des_back.jpg'
 import img1 from '../images/computer.png'
 import img3 from '../images/documents.png'
@@ -9,7 +8,6 @@ import img5 from '../images/git1.png'
 import MyComputer from './mycomputer.jsx'
 import Notepad from './notepad.jsx'
 import MyDocument from './mydocuments.jsx'
-
 export default class Desktop extends React.Component{
 	constructor(props){
 		super(props)
@@ -21,6 +19,7 @@ export default class Desktop extends React.Component{
 		this.myDocuments = this.myDocuments.bind(this)
 		this.MyComputer = this.MyComputer.bind(this)
 		this.notepad= this.notepad.bind(this)
+		this.winamp=this.winamp.bind(this)
 	}
 	myDocuments(value){
 			this.setState({
@@ -37,6 +36,9 @@ export default class Desktop extends React.Component{
 		this.setState({
 			not:value
 		})
+	}
+	winamp(value){
+		console.log('winamp',value)
 	}
 	render(){
 		return(
@@ -65,6 +67,7 @@ export default class Desktop extends React.Component{
 						{this.state.myd ? <MyDocument mydocumentClose={this.myDocuments}/> : <span></span>}
 						{this.state.myc ? <MyComputer mycomputerClose={this.MyComputer}/> : <span></span>}
 						{this.state.not ? <Notepad notepadClose={this.notepad}/> : <span></span>}
+				
 					</div>
 				</div>
 				<TaskBar />

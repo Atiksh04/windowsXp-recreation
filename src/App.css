@@ -1,3 +1,8 @@
+@font-face{
+  font-family: terminal;
+  src:url('modelseven.ttf');
+}
+
 .App {
   text-align: center;
   -webkit-font-smoothing: antialiased;
@@ -35,8 +40,8 @@
   right: 0;
 }
 .animation{
-  width:400px;
-  height: 25px;
+  width:25vw;
+  height: 1.5vw;
   position: relative;
   border:2px solid white;
   border-radius:10px;
@@ -46,8 +51,8 @@
   left:35vw;
 }
 .animation_span{
-  height: 20px;
-  width:15px;
+  height: 1vw;
+  width:1vw;
   position: relative;
   background-color: blue;
   color:blue;
@@ -60,18 +65,18 @@
 }
 @keyframes bootanimation{
  0%{
-    left:0px;
+    left:0;
   }
   100%{
-    left:380px;
+    left:23vw;
   }
 }
 @-webkit-keyframes bootanimation{
  0%{
-    left:0px;
+    left:0;
   }
   100%{
-    left:380px;
+    left:23vw;
   }
 }
 .im{
@@ -196,7 +201,8 @@ height: inherit;
 }
 .start_button:hover{
   cursor:default;
-  border:none;
+  border-width:0px;
+
 }
 .start_button:active{
   border:none;
@@ -243,7 +249,13 @@ cursor: pointer;
   height: 430px;
 } 
 .taskbar_expanded_middle_right{
-background-color:rgb(203, 227, 255);;
+background-color:rgb(203, 227, 255);
+}
+ 
+.taskbar_expanded_middle_left>div:hover{
+  background-color:rgb(47, 113, 205);
+  color:white;
+  font-weight: 700
 }
 .seperator{
       background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.0980392) 50%, rgba(0, 0, 0, 0) 100%) content-box;
@@ -407,4 +419,62 @@ margin: 0px;
 source{
   height: inherit;
   width:inherit;
+}
+.all-program:hover{
+  background-color:rgb(47, 113, 205);
+  color:white;
+  font-weight:700;
+}
+.bios{
+  height: 100vh;
+  font-family: terminal;
+  width: 100vw;
+  background-color: black;
+  color:white;
+}
+.bios_heading{
+
+  font-size:30px;
+  font-weight:700;
+}
+.bios_input{
+  background-color: black;
+  color:white;
+  border:0px;
+  font-size:40px;
+}
+.bios_input:focus{
+  border:0px;
+  border-color:black;
+  outline-color: black;
+
+}
+.logOff_text{
+  font-size: 20px;
+  color:white;
+  font-weight:700;
+}
+.logOff_button {
+  color:white !important;
+  font-size:20px !important;
+  border:1px solid white !important;
+}
+.video_stream{
+  position: absolute;
+  top:0;
+  right: 0;
+  z-index: 30;
+}
+.startup_text{
+  color:white;
+  font-size:20px;
+  font-family: terminal;
+  border:1px solid white;
+}
+.startup_text_two{
+  color:white;
+  font-size:14px;
+}
+.video{
+  display: none;
 }
