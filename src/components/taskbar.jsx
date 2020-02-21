@@ -43,7 +43,7 @@ export default class TaskBar extends React.Component{
 					<img className="mr-1" src={img1} alt="icon"/>
 					<img className="mr-1" src={img2} alt="icon"/>
 					<img className="mr-1" src={img3} alt="icon"/>
-					<span>{this.hour}:{this.min}</span>
+					<span className="show_time">{this.hour}:{this.min}</span>
 				</div>
 			</div>
  

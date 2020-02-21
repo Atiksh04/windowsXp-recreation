@@ -41,7 +41,7 @@
 }
 .animation{
   width:25vw;
-  height: 1.5vw;
+  height: 2vw;
   position: relative;
   border:2px solid white;
   border-radius:10px;
@@ -188,9 +188,12 @@ right:0;
 text-align: left;
 color:white;
 padding-top: 2px;
-width:130px;
+width:150px;
 height: inherit;
   background-color:#14A5F4;
+}
+.show_time{
+  font-size:12px;
 }
 .start_button{
   background:inherit;
